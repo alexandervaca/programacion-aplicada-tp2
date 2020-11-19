@@ -2,6 +2,7 @@ from modelo import Participante
 from modelo import Disparo
 from modelo import CalculadorDisparo
 from modelo import Concurso
+from dbapi import DBApi
 
 print('***************************')
 print('* Programa Tiro al Blanco *')
@@ -57,6 +58,8 @@ concurso.mostrarParticipantesPorEdad()
 print('\n')
 print('Promedio de todos los disparos: ' + str(concurso.promedioDisparos()))
 print('\n')
-concurso.guardarCSV()
+#concurso.guardarCSV()
+dbApi = DBApi() 
+dbApi.guardarDB(concurso.disparos)
 print('\n')
 print('* Fin de programa *')
