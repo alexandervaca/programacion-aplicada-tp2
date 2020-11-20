@@ -150,4 +150,21 @@ class Concurso:
 
         print('Los datos del torneo se guardaron en el archivo: torneo.csv')
     
+    def obtenerPremio(self, participante, mejorDisparo):
+        mensaje = 'Felicitacion {}!! Por su disparo: {}. '.format(participante,mejorDisparo)
+        premio = 'Premio: $ {} (Debe buscarlo en el Banco Nacion de Fuerte Apache XD)'
+        if mejorDisparo >= 0.0 and mejorDisparo <= 10.0:
+            premio = premio.format(2000)
+        elif mejorDisparo > 10.0 and mejorDisparo <= 30.0:
+            premio = premio.format(1200)
+        elif mejorDisparo > 30.0 and mejorDisparo <= 60.0:
+            premio = premio.format(700)
+        elif mejorDisparo > 60.0 and mejorDisparo <= 80.0:
+            premio = premio.format(500)
+        elif mejorDisparo > 80.0:
+            mensaje = 'Gracias por participar {}!! Mejor punteria la proxima vez.'.format(participante)
+            premio = ''
+        
+        return {'mensaje':mensaje,'premio':premio}
+    
     pass
