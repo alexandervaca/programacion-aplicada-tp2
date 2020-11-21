@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Disparo
+from database_setup import Base, DisparoDB
+from modelo import Disparo
 
 #conexion a la base de datos
 class DBApiAlchemy:
@@ -13,8 +14,8 @@ class DBApiAlchemy:
     session = DBSession()
 
     for disparo in disparos:
-      disparoDB = Disparo()
-      disparoDB.nro_participante = disparo.nro_participante
+      disparoDB = DisparoDB()
+      disparoDB.nro_participante = disparo.numero
       disparoDB.nombre = disparo.nombre
       disparoDB.apellido = disparo.apellido
       disparoDB.edad = disparo.edad
@@ -22,8 +23,8 @@ class DBApiAlchemy:
       disparoDB.disp1 = disparo.disp1
       disparoDB.disp2 = disparo.disp2
       disparoDB.disp3 = disparo.disp3
-      disparoDB.mejor_disp = disparo.mejor_disp
-      disparoDB.prom_disp = disparo.prom_disp
+      disparoDB.mejor_disp = disparo.mejorDisp
+      disparoDB.prom_disp = disparo.promedioDisp
       session.add(disparoDB)
 
     session.commit()
@@ -34,7 +35,7 @@ class DBApiAlchemy:
 
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
-    disparosDB = session.query(Disparo).all()
+    disparosDB = session.query(DisparoDB).all()
     for disparoDB in disparosDB:
       print(disparoDB)
 

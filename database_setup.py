@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
-class Disparo(Base):
+class DisparoDB(Base):
     __tablename__ = 'disparos'
 
     id = Column(Integer,primary_key=True)
