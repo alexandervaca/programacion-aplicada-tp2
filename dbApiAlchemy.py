@@ -37,5 +37,5 @@ class DBApiAlchemy:
     session = DBSession()
     disparosDB = session.query(DisparoDB).all()
     for disparoDB in disparosDB:
-      print(disparoDB)
+      print(str(disparoDB.nro_participante) + ' ' + disparoDB.nombre)
 
