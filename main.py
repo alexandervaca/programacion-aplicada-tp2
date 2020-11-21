@@ -3,6 +3,7 @@ from modelo import Disparo
 from modelo import CalculadorDisparo
 from modelo import Concurso
 from dbapi import DBApi
+from dbApiAlchemy import DBApiAlchemy
 
 print('***************************')
 print('* Programa Tiro al Blanco *')
@@ -67,6 +68,14 @@ if concurso.disparos.__len__() > 0:
     dbApi.guardarEnDB(concurso.disparos)
 
 print('\n')
-print('Datos del Torneo cargados en la Base de Datos')
+print('Datos del Torneo cargados en la Base de Datos Sqlite')
 dbApi.mostrarDisparos()
+
+print('\n')
+print('Datos del Torneo cargados en la Base de Datos SqlAlchemy')
+dbApiAlchemy = DBApiAlchemy()
+if concurso.disparos.__len__() > 0:
+    dbApiAlchemy.guardar(concurso.disparos)
+
+dbApiAlchemy.mostrarDisparos()
 print('* Fin de programa *')
